@@ -5,6 +5,7 @@ function App() {
   const [pshow, setPshow] = useState(false);
   const [pcheck, setPcheck] = useState('');
   const [password, setPassword] = useState('');
+  const [inqurie, setInqurie] = useState(false);
 
   const passwordShow = (e) => {
     const passValue = e.target.value
@@ -44,6 +45,11 @@ function App() {
 
   return (
     <>
+      <div className={` ${inqurie ?'block':'hidden'} bg-[rgba(0,0,0,0.8)] fixed w-screen h-screen z-20`}></div>
+      <div className={`bg-white w-[320px] h-[320px] fixed left-[40%] transition duration-[3000] ease-in delay-100 ${inqurie ? 'top-[20%]' : 'top-[-500px]'} transform-[translate(-50%, -50%)] z-40 rounded-lg `}>
+        <h1 className='p-5 text-4xl'>check it</h1>
+        <span className='text-5xl absolute top-0 right-2 cursor-pointer' onClick={() => setInqurie(false)}>&times;</span>
+      </div>
       <div className="containe w-[100vw] h-[100vh] m-auto bg-gray-900 text-white flex items-center flex-col justify-center ">
 
         <h1 className='text-3xl my-3'>Password Hide Show</h1>
@@ -58,6 +64,7 @@ function App() {
           <p className={`absolute bottom-[-30px] left-0 font-medium ${getTextColor()}`}>Password is {pcheck} </p>
         )}
         </div>
+        <button type='submit' className='flex bg-white text-black my-5 px-5 py-2.5 rounded-md font-bold cursor-pointer hover:bg-transparent border border-white hover:text-white' onClick={()=> setInqurie(true)}>Inquire</button>
       </div>
     </>
   );
